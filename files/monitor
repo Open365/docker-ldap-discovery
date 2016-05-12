@@ -1,0 +1,10 @@
+dn: olcDatabase={1}monitor
+objectClass: olcDatabaseConfig
+olcDatabase: {1}monitor
+structuralObjectClass: olcDatabaseConfig
+entryUUID: 3de8f1c2-0348-1034-9338-4d4cf5246377
+creatorsName: cn=config
+createTimestamp: 20141118082547Z
+entryCSN: 20141118082547.515916Z#000000#000#000000
+modifiersName: cn=config
+modifyTimestamp: 20141118082547Z

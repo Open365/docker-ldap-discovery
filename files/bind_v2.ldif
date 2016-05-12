@@ -1,0 +1,3 @@
+dn: cn=config
+add: olcAllows
+olcAllows: bind_v2
