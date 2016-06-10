@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
+ulimit -n 1024
 
 ERR_ENTRY_ALREADY_EXISTS=68
 add_ldif() {
