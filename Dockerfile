@@ -11,13 +11,14 @@ COPY ldap.sh /tmp/
 COPY files/slapd.conf /tmp/
 
 RUN apk update && \
-    /scripts-base/installExtraBuild.sh && \
+    /scripts-base/buildDependencies.sh --production --install && \
     apk add --no-cache openldap openldap-clients openldap-back-monitor && \
     npm install -g --verbose eyeos-run-server eyeos-tags-to-dns eyeos-service-ready-notify-cli && \
     curl -L https://releases.hashicorp.com/serf/0.6.4/serf_0.6.4_linux_amd64.zip -o serf.zip && unzip serf.zip && mv serf /usr/bin/ && \
     chmod +x /tmp/start.sh && \
     chmod +x /tmp/ldap.sh && \
-    chmod 600 /tmp/ldap_rootpwd
+    chmod 600 /tmp/ldap_rootpwd && \
+    /scripts-base/buildDependencies.sh --production --purgue
 
 CMD /tmp/start.sh
 
