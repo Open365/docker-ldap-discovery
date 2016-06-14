@@ -1,0 +1,5 @@
+# Install packages to images docker, "common" is declared into dependencies.list of alpine6-node-base.
+add="$common openldap openldap-clients openldap-back-monitor"
+
+# Delete packages to images docker, "common" is declared into dependencies.list of alpine6-node-base.
+del="$common"

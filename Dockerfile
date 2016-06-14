@@ -4,15 +4,10 @@ MAINTAINER eyeos
 ENV WHATAMI ldap
 ENV LDAP_LOG_LEVEL 0
 
-COPY files/base.ldif /tmp/
-COPY files/ldap_rootpwd /tmp/
-COPY start.sh /tmp/
-COPY ldap.sh /tmp/
-COPY files/slapd.conf /tmp/
+COPY alpine-*.list /var/service/
+COPY files/base.ldif files/ldap_rootpwd start.sh ldap.sh files/slapd.conf /tmp/
 
-RUN apk update && \
-    /scripts-base/buildDependencies.sh --production --install && \
-    apk add --no-cache openldap openldap-clients openldap-back-monitor && \
+RUN /scripts-base/buildDependencies.sh --production --install && \
     npm install -g --verbose eyeos-run-server eyeos-tags-to-dns eyeos-service-ready-notify-cli && \
     curl -L https://releases.hashicorp.com/serf/0.6.4/serf_0.6.4_linux_amd64.zip -o serf.zip && unzip serf.zip && mv serf /usr/bin/ && \
     chmod +x /tmp/start.sh && \
