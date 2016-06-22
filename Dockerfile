@@ -10,7 +10,6 @@ COPY files/slapd.conf /etc/openldap/slapd.conf
 RUN /scripts-base/buildDependencies.sh --production --install && \
     npm install -g --verbose eyeos-service-ready-notify-cli && \
     npm cache clean && \
-    curl -L https://releases.hashicorp.com/serf/0.6.4/serf_0.6.4_linux_amd64.zip -o serf.zip && unzip serf.zip && mv serf /usr/bin/ && \
     /scripts-base/buildDependencies.sh --production --purgue
 
 CMD /var/service/start.sh
